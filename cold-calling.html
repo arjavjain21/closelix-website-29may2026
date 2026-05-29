@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ColdCallHQ | DFY Cold Calling</title>
+  <meta name="description" content="Booked meetings from cold dial outreach. We handle list, scripts, dialers, callers, and reporting. You focus on selling.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg-primary: #08080c;
+      --bg-secondary: #0f0f16;
+      --bg-card: #14141e;
+      --border: #1e1e2e;
+      --border-hover: #2a2a40;
+      --text-primary: #f4f4f5;
+      --text-secondary: #a1a1aa;
+      --text-muted: #71717a;
+      --accent: #06b6d4;
+      --accent-hover: #22d3ee;
+      --accent-bg: rgba(6, 182, 212, 0.08);
+      --green: #22c55e;
+      --red: #ef4444;
+      --font-body: 'DM Sans', sans-serif;
+      --font-heading: 'Space Grotesk', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Header */
+    .header {
+      padding: 20px 32px;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(8, 8, 12, 0.9);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .logo-parent {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .header-cta {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--bg-primary);
+      background: var(--text-primary);
+      padding: 10px 20px;
+      border-radius: 8px;
+      transition: background 0.2s ease;
+    }
+
+    .header-cta:hover {
+      background: var(--accent);
+    }
+
+    /* Sections */
+    .section {
+      padding: 80px 32px;
+    }
+
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: clamp(28px, 5vw, 40px);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+    }
+
+    .section-subtitle {
+      font-size: 18px;
+      color: var(--text-secondary);
+      max-width: 600px;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 100px 32px 80px;
+      text-align: center;
+      background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      background: var(--accent-bg);
+      padding: 8px 16px;
+      border-radius: 100px;
+      margin-bottom: 32px;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    .hero-title {
+      font-family: var(--font-heading);
+      font-size: clamp(36px, 7vw, 64px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -2px;
+      margin-bottom: 24px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-subtitle {
+      font-size: 20px;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto 40px;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--bg-primary);
+      background: var(--accent);
+      padding: 16px 32px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .hero-cta:hover {
+      background: var(--accent-hover);
+      transform: scale(1.02);
+    }
+
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 48px;
+      margin-top: 80px;
+      padding-top: 48px;
+      border-top: 1px solid var(--border);
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-value {
+      font-family: var(--font-heading);
+      font-size: 40px;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-top: 8px;
+    }
+
+    /* How It Works */
+    .how-it-works {
+      background: var(--bg-secondary);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .step {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      position: relative;
+    }
+
+    .step-number {
+      font-family: var(--font-heading);
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--border-hover);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .step-title {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .step-desc {
+      font-size: 15px;
+      color: var(--text-secondary);
+    }
+
+    /* What's Included */
+    .includes-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      margin-top: 48px;
+    }
+
+    .include-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+    }
+
+    .include-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--accent-bg);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .include-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: var(--accent);
+    }
+
+    .include-title {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .include-desc {
+      font-size: 15px;
+      color: var(--text-secondary);
+    }
+
+    /* Pricing */
+    .pricing {
+      background: var(--bg-secondary);
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .pricing-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .pricing-card.featured {
+      border-color: var(--accent);
+      position: relative;
+    }
+
+    .pricing-card.featured::before {
+      content: 'Most Popular';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--bg-primary);
+      background: var(--accent);
+      padding: 6px 16px;
+      border-radius: 100px;
+    }
+
+    .pricing-name {
+      font-family: var(--font-heading);
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .pricing-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+    }
+
+    .pricing-price {
+      font-family: var(--font-heading);
+      font-size: 40px;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .pricing-price span {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    .pricing-features {
+      list-style: none;
+      margin: 24px 0;
+      padding: 24px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      flex-grow: 1;
+    }
+
+    .pricing-features li {
+      position: relative;
+      padding-left: 28px;
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+    }
+
+    .pricing-features li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 4px;
+      width: 18px;
+      height: 18px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2322c55e' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E") no-repeat center;
+      background-size: contain;
+    }
+
+    .pricing-cta {
+      display: block;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+      background: transparent;
+      border: 1px solid var(--border);
+      padding: 14px 24px;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .pricing-cta:hover {
+      background: var(--text-primary);
+      color: var(--bg-primary);
+    }
+
+    .pricing-card.featured .pricing-cta {
+      background: var(--accent);
+      color: var(--bg-primary);
+      border-color: var(--accent);
+    }
+
+    .pricing-card.featured .pricing-cta:hover {
+      background: var(--accent-hover);
+    }
+
+    /* Social Proof */
+    .testimonials {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .testimonial {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+    }
+
+    .testimonial-quote {
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--text-primary);
+      margin-bottom: 24px;
+    }
+
+    .testimonial-quote::before {
+      content: '"';
+      font-family: var(--font-heading);
+      font-size: 48px;
+      color: var(--accent);
+      line-height: 0;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .testimonial-avatar {
+      width: 48px;
+      height: 48px;
+      background: var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .testimonial-name {
+      font-weight: 600;
+      font-size: 15px;
+    }
+
+    .testimonial-title {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .result-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      text-align: center;
+    }
+
+    .result-value {
+      font-family: var(--font-heading);
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .result-label {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    /* FAQ */
+    .faq {
+      background: var(--bg-secondary);
+    }
+
+    .faq-list {
+      max-width: 800px;
+      margin: 48px auto 0;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq-question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 0;
+      font-size: 17px;
+      font-weight: 500;
+      text-align: left;
+      background: none;
+      border: none;
+      color: var(--text-primary);
+      cursor: pointer;
+    }
+
+    .faq-question:hover {
+      color: var(--accent);
+    }
+
+    .faq-icon {
+      width: 24px;
+      height: 24px;
+      stroke: var(--text-muted);
+      transition: transform 0.2s ease;
+    }
+
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      padding-bottom: 24px;
+      font-size: 15px;
+      color: var(--text-secondary);
+      display: none;
+    }
+
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+
+    /* Final CTA */
+    .final-cta {
+      text-align: center;
+      background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+    }
+
+    .final-cta .section-title {
+      margin-bottom: 24px;
+    }
+
+    .final-cta .section-subtitle {
+      margin: 0 auto 40px;
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 48px 32px;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .footer-brand {
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+    }
+
+    .footer-logo span {
+      color: var(--accent);
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 24px;
+    }
+
+    .footer-link {
+      font-size: 14px;
+      color: var(--text-secondary);
+      transition: color 0.2s ease;
+    }
+
+    .footer-link:hover {
+      color: var(--text-primary);
+    }
+
+    .footer-legal {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-legal a {
+      font-size: 13px;
+      color: var(--text-muted);
+      transition: color 0.2s ease;
+    }
+
+    .footer-legal a:hover {
+      color: var(--text-secondary);
+    }
+
+    /* Responsive */
+    @media (min-width: 768px) {
+      .steps {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .includes-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .pricing-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .testimonials {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .results-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .footer-inner {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .footer-brand {
+        text-align: left;
+      }
+
+      .footer-legal {
+        justify-content: flex-end;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        close<span>lex</span>
+        <span class="logo-parent">/ ColdCallHQ</span>
+      </a>
+      <a href="#book-call" class="header-cta">Book a Call</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="section-inner">
+        <span class="hero-eyebrow">Fully Managed Cold Calling</span>
+        <h1 class="hero-title">Booked meetings from cold dial outreach. No SDR team required.</h1>
+        <p class="hero-subtitle">We handle list building, scripts, dialers, callers, and calendar bookings. You show up to the calls.</p>
+        <a href="#book-call" class="hero-cta">Book a Strategy Call</a>
+
+        <div class="hero-stats">
+          <div class="stat">
+            <div class="stat-value">10K+</div>
+            <div class="stat-label">Calls per month</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">85%</div>
+            <div class="stat-label">Answer rate</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">25+</div>
+            <div class="stat-label">Booked meetings weekly</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">30</div>
+            <div class="stat-label">Day launch timeline</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section how-it-works">
+      <div class="section-inner">
+        <p class="section-label">How It Works</p>
+        <h2 class="section-title">From zero to pipeline in four weeks.</h2>
+        <p class="section-subtitle">We run a structured process. No guesswork, no surprises.</p>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-number">01</div>
+            <h3 class="step-title">Discovery Call</h3>
+            <p class="step-desc">We learn your ICP, target accounts, and ideal customer profile. You define what a qualified meeting looks like.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">02</div>
+            <h3 class="step-title">List Build</h3>
+            <p class="step-desc">We build your target list. Decision makers, gatekeepers, and the people who actually take sales calls.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">03</div>
+            <h3 class="step-title">Script and Setup</h3>
+            <p class="step-desc">We create your calling script and configure the dialer. Every caller goes through training on your product.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">04</div>
+            <h3 class="step-title">Live Calling</h3>
+            <p class="step-desc">We start dialing. Booked meetings land on your calendar. You get daily reports on activity and results.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What's Included -->
+    <section class="section">
+      <div class="section-inner">
+        <p class="section-label">What's Included</p>
+        <h2 class="section-title">Everything you need to run cold calling at scale.</h2>
+        <p class="section-subtitle">We take care of the outbound machine. You focus on selling.</p>
+
+        <div class="includes-grid">
+          <div class="include-card">
+            <div class="include-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3 class="include-title">List Building</h3>
+            <p class="include-desc">We build and maintain your target list. Updated monthly. Decision-maker focused. GDPR compliant.</p>
+          </div>
+          <div class="include-card">
+            <div class="include-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <h3 class="include-title">Script Development</h3>
+            <p class="include-desc">Custom scripts built for your product and ICP. Updated based on call feedback and objection patterns.</p>
+          </div>
+          <div class="include-card">
+            <div class="include-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+            </div>
+            <h3 class="include-title">Dialer Setup</h3>
+            <p class="include-desc">Power dialer with CRM integration. Call logging, sequencing, and voicemail drop included.</p>
+          </div>
+          <div class="include-card">
+            <div class="include-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <h3 class="include-title">Live Callers</h3>
+            <p class="include-desc">Trained callers on your product. Real conversations, not spam. Daily activity reports included.</p>
+          </div>
+          <div class="include-card">
+            <div class="include-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <h3 class="include-title">Calendar Booking</h3>
+            <p class="include-desc">Qualified meetings on your calendar. No back-and-forth. Direct calendar links sent same day.</p>
+          </div>
+          <div class="include-card">
+            <div class="include-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            </div>
+            <h3 class="include-title">Reporting</h3>
+            <p class="include-desc">Weekly dashboards. Call recordings. Conversion data. Full transparency on what we are doing.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="section pricing">
+      <div class="section-inner">
+        <p class="section-label">Pricing</p>
+        <h2 class="section-title">Simple pricing. No surprises.</h2>
+        <p class="section-subtitle">Pick the volume that fits your pipeline goals.</p>
+
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <h3 class="pricing-name">Starter</h3>
+            <p class="pricing-desc">For teams starting with cold outreach</p>
+            <div class="pricing-price">$3,000<span>/month</span></div>
+            <ul class="pricing-features">
+              <li>500 qualified calls per month</li>
+              <li>1 target list</li>
+              <li>Standard scripts</li>
+              <li>Weekly reporting</li>
+              <li>Email support</li>
+            </ul>
+            <a href="#book-call" class="pricing-cta">Get Started</a>
+          </div>
+          <div class="pricing-card featured">
+            <h3 class="pricing-name">Growth</h3>
+            <p class="pricing-desc">For teams with active pipeline needs</p>
+            <div class="pricing-price">$6,000<span>/month</span></div>
+            <ul class="pricing-features">
+              <li>1,200 qualified calls per month</li>
+              <li>2 target lists</li>
+              <li>Custom scripts</li>
+              <li>Daily reporting</li>
+              <li>Priority support</li>
+            </ul>
+            <a href="#book-call" class="pricing-cta">Get Started</a>
+          </div>
+          <div class="pricing-card">
+            <h3 class="pricing-name">Scale</h3>
+            <p class="pricing-desc">For teams running full outbound motion</p>
+            <div class="pricing-price">$12,000<span>/month</span></div>
+            <ul class="pricing-features">
+              <li>3,000 qualified calls per month</li>
+              <li>Unlimited target lists</li>
+              <li>Custom scripts plus A/B testing</li>
+              <li>Real-time dashboard</li>
+              <li>Dedicated account manager</li>
+            </ul>
+            <a href="#book-call" class="pricing-cta">Get Started</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="section">
+      <div class="section-inner">
+        <p class="section-label">Results</p>
+        <h2 class="section-title">What our clients say.</h2>
+
+        <div class="testimonials">
+          <div class="testimonial">
+            <p class="testimonial-quote">We went from zero cold calling to 15 booked demos per week in under two months. The team handles everything. We just show up to the calls.</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">JD</div>
+              <div>
+                <div class="testimonial-name">[Client Name]</div>
+                <div class="testimonial-title">[Title] at [Company]</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial">
+            <p class="testimonial-quote">We tried building an in-house SDR team. It took six months and cost triple what we are paying here. The quality of meetings is the same or better.</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">MK</div>
+              <div>
+                <div class="testimonial-name">[Client Name]</div>
+                <div class="testimonial-title">[Title] at [Company]</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="results-grid">
+          <div class="result-card">
+            <div class="result-value">4.2%</div>
+            <div class="result-label">Average answer rate</div>
+          </div>
+          <div class="result-card">
+            <div class="result-value">18%</div>
+            <div class="result-label">Meeting conversion rate</div>
+          </div>
+          <div class="result-card">
+            <div class="result-value">$142</div>
+            <div class="result-label">Cost per booked meeting</div>
+          </div>
+          <div class="result-card">
+            <div class="result-value">30</div>
+            <div class="result-label">Days to first meeting</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section faq">
+      <div class="section-inner">
+        <p class="section-label">FAQ</p>
+        <h2 class="section-title">Questions? Answers.</h2>
+
+        <div class="faq-list">
+          <div class="faq-item open">
+            <button class="faq-question">
+              How quickly can we launch?
+              <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <p class="faq-answer">First calls typically happen within 30 days of signing. List building and script development happen in parallel so we are ready to dial fast.</p>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              What if we need to change our ICP?
+              <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <p class="faq-answer">You can update your ICP at any time. We rebuild lists and adjust scripts to match. There is no penalty for changing direction.</p>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              What does a qualified call look like?
+              <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <p class="faq-answer">We define qualified together during onboarding. Typically: decision maker reached, budget discussion started, timeline identified, and a follow-up meeting booked.</p>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              Do you handle gatekeepers?
+              <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <p class="faq-answer">Yes. Our scripts include gatekeeper handling. We also bypass gatekeepers with direct dial sequences when appropriate.</p>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              What if we want to pause or cancel?
+              <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <p class="faq-answer">Month-to-month after the initial 90-day term. We do not lock you into long contracts. You can pause or cancel with 30 days notice.</p>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              What CRM do you use?
+              <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <p class="faq-answer">We integrate with HubSpot, Salesforce, Pipedrive, and others. If you use something else, we can work with your existing stack.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section id="book-call" class="section final-cta">
+      <div class="section-inner">
+        <p class="section-label">Get Started</p>
+        <h2 class="section-title">Ready to book more meetings?</h2>
+        <p class="section-subtitle">Book a 30-minute strategy call. We will map out your cold calling motion and show you how we would approach your specific situation.</p>
+        <a href="mailto:hello@closelix.com?subject=ColdCallHQ%20Strategy%20Call" class="hero-cta">Book a Strategy Call</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">close<span>lex</span></div>
+        <nav class="footer-links">
+          <a href="https://coldemailscale.com/" target="_blank" rel="noopener" class="footer-link">Cold Email Scale</a>
+          <a href="https://hyperke.com" target="_blank" rel="noopener" class="footer-link">Hyperke</a>
+          <a href="cold-calling.html" class="footer-link">ColdCallHQ</a>
+        </nav>
+      </div>
+      <div class="footer-legal">
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(button => {
+      button.addEventListener('click', () => {
+        const item = button.parentElement;
+        item.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>
